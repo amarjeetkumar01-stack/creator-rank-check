@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface CreatorResultProps {
   creatorName: string;
@@ -17,25 +18,38 @@ const CreatorResult = ({ creatorName, tier }: CreatorResultProps) => {
   const config = tierConfig[normalizedTier] || tierConfig.degen;
 
   return (
-    <div className="animate-fade-in-up">
-      <div className="silver-border silver-glow rounded-xl bg-card p-8 text-center">
-        <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Creator Found
+    <div className="silver-border silver-glow rounded-xl bg-card p-8 text-center">
+      <motion.p
+        className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      >
+        Creator Found
+      </motion.p>
+
+      <motion.h2
+        className="mb-6 font-display text-3xl font-bold text-foreground md:text-4xl"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
+      >
+        {creatorName}
+      </motion.h2>
+
+      <motion.div
+        className={cn("inline-block rounded-lg border px-6 py-3", config.bgClass)}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.35, duration: 0.4, type: "spring", stiffness: 200 }}
+      >
+        <p className="mb-1 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
+          Your Tier
         </p>
-
-        <h2 className="mb-6 font-display text-3xl font-bold text-foreground md:text-4xl">
-          {creatorName}
-        </h2>
-
-        <div className={cn("inline-block rounded-lg border px-6 py-3", config.bgClass)}>
-          <p className="mb-1 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-            Your Tier
-          </p>
-          <p className={cn("font-display text-2xl font-bold tracking-wide md:text-3xl", config.class)}>
-            {config.label}
-          </p>
-        </div>
-      </div>
+        <p className={cn("font-display text-2xl font-bold tracking-wide md:text-3xl", config.class)}>
+          {config.label}
+        </p>
+      </motion.div>
     </div>
   );
 };
