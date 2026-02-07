@@ -6,6 +6,7 @@ import CreatorResult from "@/components/CreatorResult";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import NotFoundMessage from "@/components/NotFoundMessage";
 import { Search } from "lucide-react";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 interface CreatorData {
   creator_name: string;
@@ -59,7 +60,8 @@ const Index = () => {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center px-4 py-12">
+    <main className="relative flex min-h-screen items-center justify-center px-4 py-12">
+      <AnimatedBackground />
       <div className="w-full max-w-md">
         {/* Hero */}
         <div className="mb-10 text-center">
