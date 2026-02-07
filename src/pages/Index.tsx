@@ -7,6 +7,7 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import NotFoundMessage from "@/components/NotFoundMessage";
 import { Search } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import Footer from "@/components/Footer";
 
 interface CreatorData {
   creator_name: string;
@@ -129,6 +130,7 @@ const Index = () => {
         {/* Not Found */}
         {notFound && <NotFoundMessage onTryAgain={handleTryAgain} />}
       </div>
+      <Footer />
     </main>
   );
 };
